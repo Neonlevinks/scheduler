@@ -21,6 +21,12 @@ import Header from "components/Appointment/Header"
 
 import Empty from "components/Appointment/Empty"
 
+import Show from "components/Appointment/Show"
+
+import Confirm from "components/Appointment/Confirm"
+
+import Status from "components/Appointment/Status"
+
 storiesOf("Button", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
@@ -144,10 +150,13 @@ storiesOf("InterviewerList", module)
   ));
 
 storiesOf("Appointment", module)
-.addParameters({
-  backgrounds: [{ name: "white", value: "#fff", default: true }]
-})
-.add("Appointment", () => <Appointment />)
-.add("Appointment with Time", () => <Appointment time="12pm" />)
-.add("Header", () => <Header time="12pm" />)
-.add("Empty", () => <Empty onAdd={action("setDay")} />)
+  .addParameters({
+    backgrounds: [{ name: "white", value: "#fff", default: true }]
+  })
+  .add("Appointment", () => <Appointment />)
+  .add("Appointment with Time", () => <Appointment time="12pm" />)
+  .add("Header", () => <Header time="12pm" />)
+  .add("Empty", () => <Empty onAdd={action("setDay")} />)
+  .add("Show", () => <Show student="Lydia Miller-Jones" interviewer={interviewers[0].name} onEdit={action("onEdit")} onDelete={action("onDelete")} />)
+  .add("Confirm", () => <Confirm message="Delete the appointment?" onConfirm={action("onConfirm")} onCancel={action("onCancel")} />)
+  .add("Status", () => <Status message="Deleting" />)
